@@ -5,6 +5,7 @@ VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Info", "Info", "{08FB9BC6-DA22-4C22-A09D-EEF70504AE64}"
 	ProjectSection(SolutionItems) = preProject
+		PBDesk.ContosoUniv.Web\packages.config = PBDesk.ContosoUniv.Web\packages.config
 		README.md = README.md
 	EndProjectSection
 EndProject
