@@ -4,6 +4,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
+using Microsoft.Owin.Security.Facebook;
 using Owin;
 using MvcAuth.Models;
 
@@ -54,15 +55,29 @@ namespace MvcAuth
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            var x = new FacebookAuthenticationProvider() {
+                  OnAuthenticated = async context=>                      
+                context.Identity.AddClaim(new System.Security.Claims.Claim("FacebookAccessToken",context.AccessToken))
+            };
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            var f = new FacebookAuthenticationOptions() {
+                 AppId = "382105955290612",
+                 AppSecret =  "87b50c29f0c531f22f080b72cd62a5ec",
+                 Provider = x
+            };
+            app.UseFacebookAuthentication(f);
+
+            //app.UseFacebookAuthentication(
+            //   appId: "382105955290612",
+            //   appSecret: "87b50c29f0c531f22f080b72cd62a5ec");
+
+            
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "453506101300-hrmnjibba5g7m60eda9vdgg3s96hhl8j.apps.googleusercontent.com",
+                ClientSecret = "bH8ycqKLIBJIa0iio_sibDvb" 
+               
+            });
         }
     }
 }

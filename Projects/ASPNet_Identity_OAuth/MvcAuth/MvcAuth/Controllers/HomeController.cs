@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using Owin;
+using Microsoft.Owin;
+using Microsoft.Owin.Security;
 namespace MvcAuth.Controllers
 {
     [RequireHttps]
@@ -11,7 +13,12 @@ namespace MvcAuth.Controllers
     {
         public ActionResult Index()
         {
+            var x = 
+            HttpContext.GetOwinContext().Authentication.User.Identity;
+
+            //HttpContext c = (OwinContext)HttpContext.User.Identity;
             return View();
+            
         }
 
         public ActionResult About()
